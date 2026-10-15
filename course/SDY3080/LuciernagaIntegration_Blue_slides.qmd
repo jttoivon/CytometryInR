@@ -4,6 +4,8 @@ author: "David Rach"
 date: 08-28-2026
 format:
   revealjs:
+    width: 960
+    height: 800
     theme: default
     slide-number: true
     incremental: true
@@ -20,7 +22,7 @@ execute:
 [![AGPL-3.0](https://img.shields.io/badge/license-AGPLv3-blue)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
 
-For the YouTube livestream schedule, see [here](https://www.youtube.com/@cytometryinr)
+For the YouTube recording, see [here](https://www.youtube.com/live/nviugr9cLFc?si=4gbWKfNCoAhtVi55&t=84)
 
 For screen-shot slides, click [here](/course/SDY3080/LuciernagaIntegration_Blue_slides.qmd)
 
@@ -187,6 +189,14 @@ As increasingly routine at this point, we can check the "LinearSlices_Plot" outp
 ::: {.fragment}
 ```{r}
 Plot <- FITC$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -203,6 +213,14 @@ No obvious differences, lets next check the `LuciernagaQC()` output to see what 
 ::: {.fragment}
 ```{r}
 Plot <- FITC$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -212,7 +230,7 @@ plotly::ggplotly(Plot)
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-And we get back a single-signature variant, which giventhat FITC conjugated to an anti-CD3 antibody is going to be bright is kind of expected. Lets compare our retrieved signature vs. the reference using `QC_SimilarFluorophores()`  before moving on to the next fluorophore. 
+And we get back a single-signature variant, which giventhat FITC conjugated to an anti-CD3 antibody is going to be bright is kind of expected. Lets compare our retrieved signature vs. the reference using `QC_WhatsThis()`  before moving on to the next fluorophore. 
 :::
 :::
  
@@ -271,6 +289,14 @@ Accessing the "LinearSlices_Plot" output, we can see what the effect would have 
 ::: {.fragment}
 ```{r}
 Plot <- SparkBlue550$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -287,6 +313,14 @@ No major difference in signature across the 10% bins, outside a bit of a smidge 
 ::: {.fragment}
 ```{r}
 Plot <- SparkBlue550$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -303,6 +337,14 @@ Interesting, when grouping based on individual cell signatures, we can find a fe
 ::: {.fragment}
 ```{r}
 Plot <- SparkBlue550$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -319,6 +361,14 @@ The average seems to be shifted upwards, interesting. How common are the various
 ::: {.fragment}
 ```{r}
 Plot <- SparkBlue550$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -346,6 +396,14 @@ Data <- SparkBlue550$AveragedSignature_Data |>
 ```{r}
 Plot <- QC_WhatsThis(x="B3_10-V7_02", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]]) #0.98
 ```
 
@@ -357,6 +415,14 @@ plotly::ggplotly(Plot[[2]]) #0.98
 ```{r}
 Plot <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]]) #1.00
 ```
 
@@ -368,6 +434,14 @@ plotly::ggplotly(Plot[[2]]) #1.00
 ```{r}
 Plot <- QC_WhatsThis(x="B3_10-V7_05", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]]) #0.98
 ```
 
@@ -445,6 +519,14 @@ Lets start by glancing at our "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- WorstFluorophore$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -469,6 +551,14 @@ Lets see what is hiding behind the curtain in this case, lets examine the `Lucie
 ::: {.fragment}
 ```{r}
 Plot <- WorstFluorophore$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -499,6 +589,14 @@ Checking the `QC_Amalgamate()` output, lets see where the median signature ends 
 ::: {.fragment}
 ```{r}
 Plot <- WorstFluorophore$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -515,6 +613,14 @@ Alright, moment of truth, how are the different signature variants represented a
 ::: {.fragment}
 ```{r}
 Plot <- WorstFluorophore$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -567,7 +673,7 @@ QC_WhatsThis(x="B9_10-YG6_06-V13_06", columnname="Cluster", data=Data, NumberHit
 
 ::: {.fragment}
 ```{r}
-QC_WhatsThis(x="B9_10-YG6_06-V13_05", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE) #0.99
+QC_WhatsThis(x="B9_10-YG6_06-V13_05", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=FALSE) #0.99
 ```
 
 :::
@@ -594,7 +700,7 @@ Data <- WorstFluorophore$AveragedSignature_Data |>
 
 ::: {.fragment}
 ```{r}
-QC_WhatsThis(x="B9_10-YG6_07-V13_07", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE) #0.96
+QC_WhatsThis(x="B9_10-YG6_07-V13_07", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=FALSE) #0.96
 ```
 
 :::
@@ -603,7 +709,7 @@ QC_WhatsThis(x="B9_10-YG6_07-V13_07", columnname="Cluster", data=Data, NumberHit
 
 ::: {.fragment}
 ```{r}
-QC_WhatsThis(x="B9_10-YG6_05-V13_07", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE) #0.96
+QC_WhatsThis(x="B9_10-YG6_05-V13_07", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=FALSE) #0.96
 ```
 
 :::
@@ -612,7 +718,7 @@ QC_WhatsThis(x="B9_10-YG6_05-V13_07", columnname="Cluster", data=Data, NumberHit
 
 ::: {.fragment}
 ```{r}
-QC_WhatsThis(x="B9_10-YG6_05-V13_06", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE) #0.97
+QC_WhatsThis(x="B9_10-YG6_05-V13_06", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=FALSE) #0.97
 ```
 
 :::
@@ -650,6 +756,7 @@ ggplot(df) +
   theme_bw()
 ```
  
+:::
 
 ---
 
@@ -699,3 +806,7 @@ Due to the sheer number of `plotly` `ggplotly()` interactive plots that the webs
 ::: {style="text-align: right;"}
 [![AGPL-3.0](https://www.gnu.org/graphics/agplv3-with-text-162x68.png)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
+
+---
+
+![](images/TakeAway4.jpg)

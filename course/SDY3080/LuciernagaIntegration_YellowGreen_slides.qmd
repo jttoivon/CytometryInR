@@ -4,6 +4,8 @@ author: "David Rach"
 date: 08-28-2026
 format:
   revealjs:
+    width: 960
+    height: 800
     theme: default
     slide-number: true
     incremental: true
@@ -20,7 +22,7 @@ execute:
 [![AGPL-3.0](https://img.shields.io/badge/license-AGPLv3-blue)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
 
-For the YouTube livestream schedule, see [here](https://www.youtube.com/@cytometryinr)
+For the YouTube recording, see [here](https://www.youtube.com/live/nviugr9cLFc?si=4gbWKfNCoAhtVi55&t=84)
 
 For screen-shot slides, click [here](/course/SDY3080/LuciernagaIntegration_YellowGreen_slides.qmd)
 
@@ -190,6 +192,14 @@ Lets begin by checking the "LinearSlices_Plot" output, to see what the effect wo
 ::: {.fragment}
 ```{r}
 Plot <- PE$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -206,6 +216,14 @@ Similar to what we have encountered for other bright antigen-by-fluorophore comb
 ::: {.fragment}
 ```{r}
 Plot <- PE$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -222,6 +240,14 @@ We get back a few signature variants, a couple with some evidence of autofluores
 ::: {.fragment}
 ```{r}
 Plot <- PE$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -238,6 +264,14 @@ Median signature ends up with a bit of autofluorescence residual present, which 
 ::: {.fragment}
 ```{r}
 Plot <- PE$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -271,7 +305,7 @@ Data <- PE$AveragedSignature_Data |>
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-Lets pass these individually to `QC_SimilarFluorophores()` and gage the difference. 
+Lets pass these individually to `QC_WhatsThis()` and gage the difference. 
 :::
 :::
 
@@ -346,6 +380,14 @@ All the above seem a bit off from the reference, we can go ahead and verify what
 ::: {.fragment}
 ```{r}
 Plot <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)[[2]] #0.99
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -392,6 +434,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what the effect would 
 ::: {.fragment}
 ```{r}
 Plot <- PEDazzle594$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -408,6 +458,14 @@ Nice! Almost no variation whatsoever across any of the 10% bins. Having noted th
 ::: {.fragment}
 ```{r}
 Plot <- PEDazzle594$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -434,6 +492,14 @@ Data <- PEDazzle594$AveragedSignature_Data
 ```{r}
 Plots <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plots[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plots[[2]])
 ```
 
@@ -476,6 +542,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what the effect would 
 ::: {.fragment}
 ```{r}
 Plot <- PECy5$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -500,6 +574,14 @@ Having noted this, lets check out the `LuciernagaQC()` output, to see what varia
 ::: {.fragment}
 ```{r}
 Plot <- PECy5$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -617,6 +699,14 @@ Alright, with the subtraction using external background autofluorescence, lets s
 ::: {.fragment}
 ```{r}
 Plot <- PECy5$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -633,6 +723,14 @@ Nope, still some obvious step-ladders. How about for `LuciernagaQC()` output?
 ::: {.fragment}
 ```{r}
 Plot <- PECy5$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -663,6 +761,14 @@ Lets visualize the previous plot in an alternative fashion, checking to see wher
 ::: {.fragment}
 ```{r}
 Plot <- PECy5$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -687,6 +793,14 @@ Lets take a look at the "ProportionPlot" output, and see if we can find any sign
 ::: {.fragment}
 ```{r}
 Plot <- PECy5$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -704,7 +818,7 @@ Recalling that our PE-Cy5 should have up to four peaks, as we scroll through the
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-At this point, lets just compare the more abundant signatures vs. the reference via `QC_SimilarFluorophores()`. 
+At this point, lets just compare the more abundant signatures vs. the reference via `QC_WhatsThis()`. 
 :::
 :::
 
@@ -790,6 +904,14 @@ And if we contrast the average against the reference signature.
 ```{r}
 Plot <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]])
 ```
 
@@ -806,6 +928,14 @@ Finally, we can retrieve the cosine plot for all signature variants.
 ::: {.fragment}
 ```{r}
 Plot <- PECy5$CosineSimilarityPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -860,6 +990,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- PEVio770$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -876,6 +1014,14 @@ Overall, not bad (especially compared to [PE-Cy5](/course/SDY3080/LuciernagaInte
 ::: {.fragment}
 ```{r}
 Plot <- PEVio770$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -892,6 +1038,14 @@ All things reconsidered, not bad. We have one variant signature with some autofl
 ::: {.fragment}
 ```{r}
 Plot <- PEVio770$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -908,6 +1062,14 @@ Majority of the cells seem to fall under one signature. Lets visualize this same
 ::: {.fragment}
 ```{r}
 Plot <- PEVio770$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -917,7 +1079,7 @@ plotly::ggplotly(Plot)
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-Retrieving the underlying data for the signature variants, lets keep the median "Average" signature, as well as a couple variants and see how they compare to the reference control using `QC_SimilarFluorophores()`
+Retrieving the underlying data for the signature variants, lets keep the median "Average" signature, as well as a couple variants and see how they compare to the reference control using `QC_WhatsThis()`
 :::
 :::
 
@@ -1035,3 +1197,7 @@ Due to the sheer number of `plotly` `ggplotly()` interactive plots that the webs
 ::: {style="text-align: right;"}
 [![AGPL-3.0](https://www.gnu.org/graphics/agplv3-with-text-162x68.png)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
+
+---
+
+![](images/TakeAway4.jpg)

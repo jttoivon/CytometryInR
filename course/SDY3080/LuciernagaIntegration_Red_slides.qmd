@@ -4,6 +4,8 @@ author: "David Rach"
 date: 08-28-2026
 format:
   revealjs:
+    width: 960
+    height: 800
     theme: default
     slide-number: true
     incremental: true
@@ -20,7 +22,7 @@ execute:
 [![AGPL-3.0](https://img.shields.io/badge/license-AGPLv3-blue)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
 
-For the YouTube livestream schedule, see [here](https://www.youtube.com/@cytometryinr)
+For the YouTube recording, see [here](https://www.youtube.com/live/nviugr9cLFc?si=4gbWKfNCoAhtVi55&t=84)
 
 For screen-shot slides, click [here](/course/SDY3080/LuciernagaIntegration_Red_slides.qmd)
 
@@ -180,6 +182,14 @@ Lets take a look at the "LinearSlices_Plot", to see what effect would have been 
 ::: {.fragment}
 ```{r}
 Plot <- APC$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -196,6 +206,14 @@ No obvious signature variants across the bins. With this noted, we can next chec
 ::: {.fragment}
 ```{r}
 Plot <- APC$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -205,7 +223,7 @@ plotly::ggplotly(Plot)
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-And as we might anticipate, we end up retrieving just a single signature. Before we call it, lets compare it to the reference using `QC_SimilarFluorophores()`
+And as we might anticipate, we end up retrieving just a single signature. Before we call it, lets compare it to the reference using `QC_WhatsThis()`
 :::
 :::
 
@@ -222,6 +240,14 @@ Data <- APC$AveragedSignature_Data
 ```{r}
 Plot <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]])
 ```
 
@@ -264,6 +290,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- AF647$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -280,6 +314,14 @@ With no obvious differences encountered, lets check the `LuciernagaQC()` output 
 ::: {.fragment}
 ```{r}
 Plot <- AF647$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -289,7 +331,7 @@ plotly::ggplotly(Plot)
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-Alright, the red laser fluorophores are making our lives simpler! (so far). Lets pass the signature data to `QC_SimilarFluorophores()` and gage the difference vs. the reference. 
+Alright, the red laser fluorophores are making our lives simpler! (so far). Lets pass the signature data to `QC_WhatsThis()` and gage the difference vs. the reference. 
 :::
 :::
 
@@ -306,6 +348,14 @@ Data <- AF647$AveragedSignature_Data
 ```{r}
 Plot <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=22, NumberDetectors=64, returnPlots=TRUE)
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]])
 ```
 
@@ -370,6 +420,14 @@ Starting off with the "LinearSlices_Plot", lets see what the effect would have b
 ::: {.fragment}
 ```{r}
 Plot <- APCR700$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -386,6 +444,14 @@ So far so good, no immediately noticible variation across the bins. Lets next ch
 ::: {.fragment}
 ```{r}
 Plot <- APCR700$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -402,6 +468,14 @@ We end up with two signature variants, slightly different for their second "YG7"
 ::: {.fragment}
 ```{r}
 Plot <- APCR700$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -418,6 +492,14 @@ And the "ProportionPlot"
 ::: {.fragment}
 ```{r}
 Plot <- APCR700$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -427,7 +509,7 @@ plotly::ggplotly(Plot)
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-So rather equally split between the two, which adds to the argument the difference is likely a bit of noise in the detector measurement. Lets compare these two signature variants vs. the reference signature using `QC_SimilarFluorophores()`
+So rather equally split between the two, which adds to the argument the difference is likely a bit of noise in the detector measurement. Lets compare these two signature variants vs. the reference signature using `QC_WhatsThis()`
 :::
 :::
 
@@ -494,6 +576,8 @@ ggplot(df) +
 ```
 
 :::
+
+---
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
@@ -589,6 +673,14 @@ With this done, lets take a look at the "LinearSlices_Plot", to see what effect 
 ::: {.fragment}
 ```{r}
 Plot <- ZombieNIR$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -605,6 +697,14 @@ Based on getting back fairly uniform variants, it looks like our staining is suf
 ::: {.fragment}
 ```{r}
 Plot <- ZombieNIR$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -621,6 +721,14 @@ When we visualize based on individual cells, we see a few cells have some variat
 ::: {.fragment}
 ```{r}
 Plot <- ZombieNIR$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -637,6 +745,14 @@ And then follow up by checking our "ProportionPlot" to see if any variant signat
 ::: {.fragment}
 ```{r}
 Plot <- ZombieNIR$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -654,7 +770,7 @@ So three main signatures, with 16% of our cells within the gagte actually having
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-Lets retrieve the three main signatures, and compare them against the reference signature using `QC_SimilarFluorophores()` 
+Lets retrieve the three main signatures, and compare them against the reference signature using `QC_WhatsThis()` 
 :::
 :::
 
@@ -730,6 +846,14 @@ We can first take a look at the "LinearSlices_Plot", to see what effect would ha
 ::: {.fragment}
 ```{r}
 Plot <- APCFire750$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -754,6 +878,14 @@ Lets go ahead and check out the `LuciernagaQC()` output to see what signature va
 ::: {.fragment}
 ```{r}
 Plot <- APCFire750$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -770,6 +902,14 @@ Wooh! The step-ladder appearance persist, with the peak around the "YG10-A" dete
 ::: {.fragment}
 ```{r}
 Plot <- APCFire750$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -786,6 +926,14 @@ So closer to the variants without "R1/R2-A" contribution. To confirm, lets check
 ::: {.fragment}
 ```{r}
 Plot <- APCFire750$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -929,6 +1077,14 @@ We can take a look at the "LinearSlices_Plot", to see what effect would have bee
 ::: {.fragment}
 ```{r}
 Plot <- APCFire810$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -945,6 +1101,14 @@ Once again, minor step ladder for the autofluorescence region around "V7-A", but
 ::: {.fragment}
 ```{r}
 Plot <- APCFire810$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -961,6 +1125,14 @@ And yup, after having gone through the full panel of fluorophores, this is the m
 ::: {.fragment}
 ```{r}
 Plot <- APCFire810$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -977,6 +1149,14 @@ Overall, the median signature ends up halfway up the step-ladder (by contrast, f
 ::: {.fragment}
 ```{r}
 Plot <- APCFire810$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -986,7 +1166,7 @@ plotly::ggplotly(Plot)
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-Overall, most signatures end up with "R1-A" as their secondary peak, with the majority of the cells having heights between 30-60% of the main "R8-A" peak height. Lets compare the signatures with minimal and maxinum "R1-A" detector contributions alongside the median "Average" signature vs. the reference control, using `QC_SimilarFluorophores()` 
+Overall, most signatures end up with "R1-A" as their secondary peak, with the majority of the cells having heights between 30-60% of the main "R8-A" peak height. Lets compare the signatures with minimal and maxinum "R1-A" detector contributions alongside the median "Average" signature vs. the reference control, using `QC_WhatsThis()` 
 :::
 :::
 
@@ -1004,6 +1184,14 @@ Data <- APCFire810$AveragedSignature_Data |>
 ```{r}
 Plot <- QC_WhatsThis(x="R8_10-R1_09-YG5_04", columnname="Cluster", data=Data, NumberHits=64, NumberDetectors=64, returnPlots=TRUE) # 0.64
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]])
 ```
 
@@ -1015,6 +1203,14 @@ plotly::ggplotly(Plot[[2]])
 ```{r}
 Plot <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE) #0.88
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]])
 ```
 
@@ -1026,6 +1222,14 @@ plotly::ggplotly(Plot[[2]])
 ```{r}
 Plot <- QC_WhatsThis(x="R8_10-R1_02-YG5_01", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE) #0.98
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]])
 ```
 
@@ -1076,7 +1280,8 @@ And finally contrasting the median signature compared to the reference
 
 ::: {.fragment}
 ```{r}
-QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)[[2]] |> plotly::ggplotly()
+QC_WhatsThis(x="Average", columnname="Cluster", data=Data,
+ NumberHits=5, NumberDetectors=64, returnPlots=TRUE)[[2]] |> plotly::ggplotly()
 ```
 
 :::
@@ -1135,3 +1340,7 @@ Due to the sheer number of `plotly` `ggplotly()` interactive plots that the webs
 ::: {style="text-align: right;"}
 [![AGPL-3.0](https://www.gnu.org/graphics/agplv3-with-text-162x68.png)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
+
+---
+
+![](images/TakeAway4.jpg)

@@ -4,6 +4,8 @@ author: "David Rach"
 date: 08-28-2026
 format:
   revealjs:
+    width: 960
+    height: 800
     theme: default
     slide-number: true
     incremental: true
@@ -20,7 +22,7 @@ execute:
 [![AGPL-3.0](https://img.shields.io/badge/license-AGPLv3-blue)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
 
-For the YouTube livestream schedule, see [here](https://www.youtube.com/@cytometryinr)
+For the YouTube recording, see [here](https://www.youtube.com/live/nviugr9cLFc?si=4gbWKfNCoAhtVi55&t=84)
 
 For screen-shot slides, click [here](/course/SDY3080/LuciernagaIntegration_Violet_slides.qmd)
 
@@ -35,6 +37,8 @@ For screen-shot slides, click [here](/course/SDY3080/LuciernagaIntegration_Viole
 Due to the sheer number of `plotly` `ggplotly()` interactive plots that the website would need to load if we had visualized all the `LuciernagaIntegration()` plots for the 29-fluorophore panel in one go, we have broken the exploration of the fluorophore outputs by laser. This walk-through if for the "Violet" laser.
 :::
 :::
+
+---
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
@@ -267,6 +271,14 @@ This kind of error is the one I typically encounter when the 'AFOverlap' ends up
 ::: {.fragment}
 ```{r}
 Plots <- QC_ReferenceLibrary("BV421|Pacific Blue", 64, returnPlots=TRUE)[[2]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plots)
 ```
 
@@ -339,6 +351,14 @@ Lets break out `LuciernagaQC()` output and see what the grouped individual cell 
 ::: {.fragment}
 ```{r}
 Plot <- BV421$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -367,6 +387,14 @@ This might be instrument-specific (something being off on the laser or detector 
 ::: {.fragment}
 ```{r}
 Plot <- BV421$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -383,6 +411,14 @@ So our "Average" signature is similar to "V3_10-V2_10-UV7_02". We can examine th
 ::: {.fragment}
 ```{r}
 Plot <- BV421$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -416,7 +452,7 @@ Data <- BV421$AveragedSignature_Data |>
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-Lets pass these individually to `QC_SimilarFluorophores()` and gage the difference for the cosine values vs. the reference. 
+Lets pass these individually to `QC_WhatsThis()` and gage the difference for the cosine values vs. the reference. 
 :::
 :::
 
@@ -536,6 +572,14 @@ With these notes of caution, we can attempt to run `LuciernagaIntegration()` aft
 ::: {.fragment}
 ```{r}
 Plots <- QC_ReferenceLibrary("BV421|Pacific Blue", 64, returnPlots=TRUE)[[2]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plots)
 ```
 
@@ -589,6 +633,14 @@ All differences for the signatures across the bins are pretty much undistinguish
 ::: {.fragment}
 ```{r}
 Plot <- PacificBlue$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -598,7 +650,7 @@ plotly::ggplotly(Plot)
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-Only one signature present, so the antigen-fluorophore combination is bright enough to drown out any variation. Lets pass these individually to `QC_SimilarFluorophores()` and gage the difference for the cosine values vs. the reference. 
+Only one signature present, so the antigen-fluorophore combination is bright enough to drown out any variation. Lets pass these individually to `QC_WhatsThis()` and gage the difference for the cosine values vs. the reference. 
 :::
 :::
 
@@ -666,6 +718,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- BV480$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -690,6 +750,14 @@ We can next check out the `LuciernagaQC()` output to see how many signature vari
 ::: {.fragment}
 ```{r}
 Plot <- BV480$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -706,6 +774,14 @@ We end up getting back two relatively similar signatures. Some of these small di
 ::: {.fragment}
 ```{r}
 Plot <- BV480$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -722,6 +798,14 @@ Glancing at the 'ProportionPlot' output, this aligns with where the "Average" si
 ::: {.fragment}
 ```{r}
 Plot <- BV480$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -843,6 +927,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- BV510$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -859,6 +951,14 @@ Pretty much no difference in signature across the bins. To confirm this, we can 
 ::: {.fragment}
 ```{r}
 Plot <- BV510$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -925,6 +1025,14 @@ First up, lets glance at the "LinearSlices_Plot", to see what effect would have 
 ::: {.fragment}
 ```{r}
 Plot <- BV605$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -949,6 +1057,14 @@ Having noted this, lets check out the `LuciernagaQC()` grouped individual cell n
 ::: {.fragment}
 ```{r}
 Plot <- BV605$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -973,6 +1089,14 @@ Lets visualize this same plot in an alternative fashion, checking to see where t
 ::: {.fragment}
 ```{r}
 Plot <- BV605$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -989,6 +1113,14 @@ Outside of small differences in "YG3-A", everything is fairly uniform. Lets chec
 ::: {.fragment}
 ```{r}
 Plot <- BV605$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1022,7 +1154,7 @@ Data <- BV605$AveragedSignature_Data |>
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-Lets pass these individually to `QC_SimilarFluorophores()` and gage the difference. 
+Lets pass these individually to `QC_WhatsThis()` and gage the difference. 
 :::
 :::
 
@@ -1123,6 +1255,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- BV650$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1139,6 +1279,14 @@ Glancing at the signatures retrieved across the bins, fairly consistent around t
 ::: {.fragment}
 ```{r}
 Plot <- BV650$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1155,6 +1303,14 @@ All things said and done, fairly similar signatures, minor wobble around the "V7
 ::: {.fragment}
 ```{r}
 Plot <- BV650$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1171,6 +1327,14 @@ Which in turn, reflects the proportion of cells within our positive gate that we
 ::: {.fragment}
 ```{r}
 Plot <- BV650$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1292,6 +1456,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- BV711$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1308,6 +1480,14 @@ As we would anticipate for this antigen-by-fluorophore combination, the fluoroph
 ::: {.fragment}
 ```{r}
 Plot <- BV711$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1324,6 +1504,14 @@ Once again, bright antigen-fluorophore combination, so the little autofluorescen
 ::: {.fragment}
 ```{r}
 Plot <- BV711$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1351,6 +1539,14 @@ Data <- BV711$AveragedSignature_Data
 Plots <- QC_WhatsThis(x="V13_10-R4_04-UV14_02", columnname="Cluster",
  data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plots[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plots[[2]])
 ```
 
@@ -1363,6 +1559,14 @@ plotly::ggplotly(Plots[[2]])
 Plots <- QC_WhatsThis(x="V13_10-R4_03-UV14_02", columnname="Cluster",
  data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plots[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plots[[2]])
 ```
 
@@ -1413,6 +1617,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- BV750$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1429,6 +1641,14 @@ Minimal variation acrosss the board. We can follow up by checking the `Luciernag
 ::: {.fragment}
 ```{r}
 Plot <- BV750$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1455,6 +1675,14 @@ Data <- BV750$AveragedSignature_Data
 ```{r}
 Plot <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]])
 ```
 
@@ -1496,6 +1724,14 @@ Lets first take a look at the "LinearSlices_Plot", to see what effect would have
 ::: {.fragment}
 ```{r}
 Plot <- BV786$LinearSlices_Plot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1520,6 +1756,14 @@ Having noted this, lets check out the `LuciernagaQC()` grouped individual cell n
 ::: {.fragment}
 ```{r}
 Plot <- BV786$LuciernagaQC_Signatures
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1536,6 +1780,14 @@ Finally, a non-consistent fluorophore! (it has been a while since we had some va
 ::: {.fragment}
 ```{r}
 Plot <- BV786$LuciernagaQC_AmalgamatedPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1552,6 +1804,14 @@ So overall, median signature tacks towards the signature variant without the aut
 ::: {.fragment}
 ```{r}
 Plot <- BV786$ProportionPlot
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot)
 ```
 
@@ -1561,7 +1821,7 @@ plotly::ggplotly(Plot)
 
 ::: {.fragment}
 ::: {.callout-tip title="."}
-I have seen enough, but for completionist sake, lets pass "Average" to `QC_SimilarFluorophores()` and gage the difference vs. the reference.  
+I have seen enough, but for completionist sake, lets pass "Average" to `QC_WhatsThis()` and gage the difference vs. the reference.  
 :::
 :::
 
@@ -1578,6 +1838,14 @@ Data <- BV786$AveragedSignature_Data
 ```{r}
 Plot <- QC_WhatsThis(x="Average", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=TRUE)
 Plot[[1]]
+```
+
+:::
+
+---
+
+::: {.fragment}
+```{r}
 plotly::ggplotly(Plot[[2]])
 ```
 
@@ -1629,3 +1897,7 @@ Due to the sheer number of `plotly` `ggplotly()` interactive plots that the webs
 ::: {style="text-align: right;"}
 [![AGPL-3.0](https://www.gnu.org/graphics/agplv3-with-text-162x68.png)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
+
+---
+
+![](images/TakeAway4.jpg)

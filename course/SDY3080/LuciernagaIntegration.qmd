@@ -16,9 +16,11 @@ execute:
 [![AGPL-3.0](https://img.shields.io/badge/license-AGPLv3-blue)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 :::
 
-For the YouTube livestream schedule, see [here](https://www.youtube.com/@cytometryinr)
+For the YouTube recording, see [here](https://www.youtube.com/live/nviugr9cLFc?si=4gbWKfNCoAhtVi55&t=84)
 
-For screen-shot slides, click [here]()
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nviugr9cLFc?si=4gbWKfNCoAhtVi55&amp;start=84" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+For screen-shot slides, click [here](/course/SDY3080/LuciernagaIntegration_slides.qmd)
 
 <br>
 
@@ -267,7 +269,7 @@ Data <- BUV395$AveragedSignature_Data |>
    filter(Cluster %in% c("UV2_10", "Average", "UV2_10-V7_03"))
 ```
 
-With this accomplished, we can carry out some of the signature comparison steps we encountered during [Week 13](/course/13_SpectralSimilarities/index.qmd). We can start off by passing each individual signature to  `QC_SimilarFluorophores()` to better gage the differences between them. 
+With this accomplished, we can carry out some of the signature comparison steps we encountered during [Week 13](/course/13_SpectralSimilarities/index.qmd). We can start off by passing each individual signature to  `QC_WhatsThis()` to better gage the differences between them. 
 
 ```{r}
 QC_WhatsThis(x="UV2_10", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=FALSE)
@@ -458,7 +460,7 @@ Data <- BUV615$AveragedSignature_Data |>
    filter(Cluster %in% c("UV10_10-YG3_09-V10_02", "Average", "UV10_10-YG3_09-V10_06"))
 ```
 
-Lets pass these individually to `QC_SimilarFluorophores()` and gage the difference. 
+Lets pass these individually to `QC_WhatsThis()` and gage the difference. 
 
 ```{r}
 QC_WhatsThis(x="UV10_10-YG3_09-V10_02", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=FALSE)
@@ -628,7 +630,7 @@ Data <- BUV737$AveragedSignature_Data |>
    filter(Cluster %in% c("UV14_10-R5_06-B11_03","UV14_10-R5_05-B11_03", "UV14_10-R5_04-B11_03", "UV14_10-R5_03-B11_02", "Average"))
 ```
 
-Lets pass these individually to `QC_SimilarFluorophores()` and gage the difference. 
+Lets pass these individually to `QC_WhatsThis()` and gage the difference. 
 
 ```{r}
 QC_WhatsThis(x="UV14_10-R5_04-B11_03", columnname="Cluster", data=Data, NumberHits=5, NumberDetectors=64, returnPlots=FALSE) # 0.92
@@ -779,7 +781,17 @@ And then, we also encountered 6 problematic cell single-color unmixing controls.
 
 ![](images/FAIL_APCFire810.png)
 
-While differing in their extent, BUV737, PE-Cy5 and APC-Fire 810 are in the worst shape, and would likely cause issues with the unmixing of the full-stained samples if they were included within the unmixing matrix. 
+While differing in their extent, BUV737, PE-Cy5 and APC-Fire 810 are in the worst shape, and would likely cause issues with the unmixing of the full-stained samples if they were included within the unmixing matrix.
+
+Likewise, we looked at unstained samples and characterized the autofluorescence variation that is present within. Main things we noticed were shift in secondary peak usage for cord blood vs peripheral blood mononuclear cells, and some interesting variation in the height of the secondary "UV7" detector that ties into how similar the signature compares to our autofluorescence-similar fluorophores. 
+
+- INF052 Ctrl (CBMC)
+
+![](images/CBMCCtrl.png)
+
+- ND006 Ctrl (PBMC)
+
+![](images/AdultPBMCCtrl.png)
 
 We will circle back to these bad unmixing control signatures during [Week 15](/Schedule.qmd#evaluating-unmixing) and evaluate what kind of unmixing errors they would generate compared to full-stained samples that had been unmixed with more representative fluorophore signatures. Until then, have fun looking at your own single-color unmixing controls, and make sure to share any interesting tandem-degradation finds on the [Discussions Page](https://github.com/UMGCCCFCSR/CytometryInR/discussions)
 
